@@ -14,16 +14,31 @@ const App = () => {
     const { data } = await commerce.products.list();
     setProducts(data);
   };
+
+  // Sử dụng để thêm sản phẩm vào Cart
+
+  const [cart, setCart] = useState({});
+  const fetchCart = async () => {
+    setCart(await commerce.cart.retrieve());
+  };
+
+  const handelAddToCart = async (productID, quantity) => {
+    const item = await commerce.cart.add(products, quantity);
+    //update cart
+    setCart(item.cart);
+  };
+
   useEffect(() => {
     fetchProducts();
+    fetchCart();
   }, []);
 
-  console.log(products);
+  console.log(cart);
 
   return (
     <div>
       <Navbar />
-      <Products products={products} />
+      <Products products={products} onAddToCart={handelAddToCart} />
     </div>
   );
 };
