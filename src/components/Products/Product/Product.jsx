@@ -9,7 +9,7 @@ import {
 } from "@material-ui/core";
 import { AddShoppingCart } from "@material-ui/icons"; // named import/export
 import useStyles from "./styles"; // default import/export
-import img from "../../../assets/test.jpg";
+
 const Product = ({ product, onAddToCart }) => {
   const classes = useStyles(); // sử dụng các styles đã định nghĩa sẵn trogn  file styles.js
 
