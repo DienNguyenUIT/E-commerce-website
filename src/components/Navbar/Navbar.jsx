@@ -9,7 +9,6 @@ import {
   Typography,
 } from "@material-ui/core";
 import { ShoppingCart } from "@material-ui/icons";
-// 1 cái .. là trở về 1 thư mục cha của thư mục chứa file này => về thư mục src
 import logo from "../../assets/commerce.png";
 
 import useStyles from "./styles";
