@@ -9,8 +9,12 @@ import { Products, Navbar, Cart, Checkout } from "./components";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 const App = () => {
   // Khởi tạo state cho products bằng hook
-  const [products, setProducts] = useState([]);
+  const [shirts, setShirts] = useState([]);
+  // Khởi tạo state cho products bằng hook
+  const [hoodies, setHoodies] = useState([]);
 
+  // Khởi tạo state cho products bằng hook
+  const [sweaters, setSweaters] = useState([]);
   // Khởi tạo state cho cart bằng hook
   const [cart, setCart] = useState({});
 
@@ -74,9 +78,26 @@ const App = () => {
 
   // update product and cart
   useEffect(() => {
-    const fetchProducts = async () => {
-      const { data } = await commerce.products.list();
-      setProducts(data);
+    const fetchShirts = async () => {
+      const { data } = await commerce.products.list({
+        category_slug: ["shirt"],
+      });
+
+      setShirts(data);
+    };
+    const fetchHoodies = async () => {
+      const { data } = await commerce.products.list({
+        category_slug: ["hoodie"],
+      });
+
+      setHoodies(data);
+    };
+    const fetchSweaters = async () => {
+      const { data } = await commerce.products.list({
+        category_slug: ["sweater"],
+      });
+
+      setSweaters(data);
     };
 
     // Hàm lấy data của các sản phẩm hiện có trong giỏ hàng sau đó cập nhật cho cart
@@ -84,7 +105,9 @@ const App = () => {
       setCart(await commerce.cart.retrieve());
     };
 
-    fetchProducts();
+    fetchShirts();
+    fetchHoodies();
+    fetchSweaters();
     fetchCart();
   }, []);
 
@@ -99,7 +122,21 @@ const App = () => {
         <Switch>
           <Route exact path="/">
             <Products
-              products={products}
+              products={shirts}
+              onAddToCart={handleAddToCart}
+              handleUpdateCartQty
+            />
+          </Route>
+          <Route exact path="/hoodies">
+            <Products
+              products={hoodies}
+              onAddToCart={handleAddToCart}
+              handleUpdateCartQty
+            />
+          </Route>
+          <Route exact path="/sweaters">
+            <Products
+              products={sweaters}
               onAddToCart={handleAddToCart}
               handleUpdateCartQty
             />
