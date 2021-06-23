@@ -24,53 +24,51 @@ const AddressForm = ({ checkoutToken, next }) => {
   // Chứa các method cần thiết cho address form
   const methods = useForm();
 
-  // Lấy data từ API commercejs
-  const fetchShippingCountries = async (checkoutTokenId) => {
-    const { countries } = await commerce.services.localeListShippingCountries(
-      checkoutTokenId
-    );
-
-    setShippingCountries(countries);
-    // Set giá trị ShippingCountry đầu tiên là giá trị mặc định
-    setShippingCountry(Object.keys(countries)[0]);
-  };
-
-  // Lấy data từ API commercejs
-  const fetchSubdivisions = async (countryCode) => {
-    const { subdivisions } = await commerce.services.localeListSubdivisions(
-      countryCode
-    );
-
-    setShippingSubdivisions(subdivisions);
-    // Set giá trị ShippingSubdivision đầu tiên là giá trị mặc định
-    setShippingSubdivision(Object.keys(subdivisions)[0]);
-  };
-
-  // Lấy data từ API commercejs
-  const fetchShippingOptions = async (
-    checkoutTokenId,
-    country,
-    region = null
-  ) => {
-    const options = await commerce.checkout.getShippingOptions(
-      checkoutTokenId,
-      { country, region }
-    );
-
-    setShippingOptions(options);
-    setShippingOption(options[0].id);
-  };
-
   // 3 useEffect: thực hiện lấy data từ API theo thư tự fetchShippingCountries => fetchSubdivisions =>fetchShippingOptions
   useEffect(() => {
+    // Lấy data từ API commercejs
+    const fetchShippingCountries = async (checkoutTokenId) => {
+      const { countries } = await commerce.services.localeListShippingCountries(
+        checkoutTokenId
+      );
+
+      setShippingCountries(countries);
+      // Set giá trị ShippingCountry đầu tiên là giá trị mặc định
+      setShippingCountry(Object.keys(countries)[0]);
+    };
+
     fetchShippingCountries(checkoutToken.id);
   }, []);
 
   useEffect(() => {
+    // Lấy data từ API commercejs
+    const fetchSubdivisions = async (countryCode) => {
+      const { subdivisions } = await commerce.services.localeListSubdivisions(
+        countryCode
+      );
+
+      setShippingSubdivisions(subdivisions);
+      // Set giá trị ShippingSubdivision đầu tiên là giá trị mặc định
+      setShippingSubdivision(Object.keys(subdivisions)[0]);
+    };
     if (shippingCountry) fetchSubdivisions(shippingCountry);
   }, [shippingCountry]);
 
   useEffect(() => {
+    // Lấy data từ API commercejs
+    const fetchShippingOptions = async (
+      checkoutTokenId,
+      country,
+      region = null
+    ) => {
+      const options = await commerce.checkout.getShippingOptions(
+        checkoutTokenId,
+        { country, region }
+      );
+
+      setShippingOptions(options);
+      setShippingOption(options[0].id);
+    };
     if (shippingSubdivision)
       fetchShippingOptions(
         checkoutToken.id,
@@ -114,6 +112,7 @@ const AddressForm = ({ checkoutToken, next }) => {
             <FormInput name="firstName" label="First name" />
             <FormInput name="lastName" label="Last name" />
             <FormInput name="address1" label="Address line 1" />
+            <FormInput name="phone" label="Phone" />
             <FormInput name="email" label="Email" />
             <FormInput name="city" label="City" />
             <FormInput name="zip" label="Zip / Postal code" />

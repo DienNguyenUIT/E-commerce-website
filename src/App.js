@@ -21,15 +21,6 @@ const App = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   // Hàm lấy data của các sản phẩm sau đó cập nhật cho state products
-  const fetchProducts = async () => {
-    const { data } = await commerce.products.list();
-    setProducts(data);
-  };
-
-  // Hàm lấy data của các sản phẩm hiện có trong giỏ hàng sau đó cập nhật cho cart
-  const fetchCart = async () => {
-    setCart(await commerce.cart.retrieve());
-  };
 
   // Xử lý event khi click button AddToCart trên sản phẩm ở homepage
   const handleAddToCart = async (productId, quantity) => {
@@ -83,6 +74,16 @@ const App = () => {
 
   // update product and cart
   useEffect(() => {
+    const fetchProducts = async () => {
+      const { data } = await commerce.products.list();
+      setProducts(data);
+    };
+
+    // Hàm lấy data của các sản phẩm hiện có trong giỏ hàng sau đó cập nhật cho cart
+    const fetchCart = async () => {
+      setCart(await commerce.cart.retrieve());
+    };
+
     fetchProducts();
     fetchCart();
   }, []);

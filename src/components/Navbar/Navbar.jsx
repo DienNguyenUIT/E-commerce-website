@@ -37,6 +37,7 @@ const Navbar = ({ totalItems }) => {
             />
             Commerce.js
           </Typography>
+
           <div className={classes.grow} />
 
           {location.pathname === "/" && (

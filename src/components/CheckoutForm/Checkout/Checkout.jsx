@@ -43,7 +43,7 @@ const Checkout = ({ cart, onCaptureCheckout, order, error }) => {
 
         setCheckoutToken(token);
       } catch (error) {
-        console.log("loi khong tao duoc token");
+        console.log(error);
       }
     };
 
