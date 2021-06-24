@@ -9,6 +9,8 @@ import { Products, Navbar, Cart, Checkout } from "./components";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 const App = () => {
   // Khởi tạo state cho products bằng hook
+  const [products, setProducts] = useState([]);
+  // Khởi tạo state cho products bằng hook
   const [shirts, setShirts] = useState([]);
   // Khởi tạo state cho products bằng hook
   const [hoodies, setHoodies] = useState([]);
@@ -99,12 +101,17 @@ const App = () => {
 
       setSweaters(data);
     };
+    const fetchProducts = async () => {
+      const { data } = await commerce.products.list();
+      setProducts(data);
+    };
 
     // Hàm lấy data của các sản phẩm hiện có trong giỏ hàng sau đó cập nhật cho cart
     const fetchCart = async () => {
       setCart(await commerce.cart.retrieve());
     };
 
+    fetchProducts();
     fetchShirts();
     fetchHoodies();
     fetchSweaters();
@@ -121,6 +128,14 @@ const App = () => {
         />
         <Switch>
           <Route exact path="/">
+            <Products
+              products={products}
+              onAddToCart={handleAddToCart}
+              handleUpdateCartQty
+            />
+          </Route>
+
+          <Route exact path="/shirts">
             <Products
               products={shirts}
               onAddToCart={handleAddToCart}

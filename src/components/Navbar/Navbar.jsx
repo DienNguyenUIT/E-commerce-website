@@ -40,7 +40,21 @@ const Navbar = ({ totalItems }) => {
             />
             E-shopping
           </Typography>
-
+          <Typography
+            component={Link}
+            to="/shirts"
+            variant="h6"
+            className={classes.title}
+            color="inherit"
+          >
+            <img
+              src={logoHoodie}
+              alt="Commerce.js"
+              height="25 pixel"
+              className={classes.image}
+            />
+            T-Shirt
+          </Typography>
           <Typography
             component={Link}
             to="/hoodies"
@@ -105,7 +119,7 @@ const Navbar = ({ totalItems }) => {
 
           <div className={classes.grow} />
           {/* (location.pathname === "/" || location.pathname === "/hoodies") */}
-          {location.pathname != "/cart" && (
+          {location.pathname !== "/cart" && (
             <div className={classes.button}>
               <IconButton
                 component={Link}
