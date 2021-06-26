@@ -111,6 +111,8 @@ const App = () => {
       setCart(await commerce.cart.retrieve());
     };
 
+    // commerce.products.list().then((product) => console.log(product));
+
     fetchProducts();
     fetchShirts();
     fetchHoodies();

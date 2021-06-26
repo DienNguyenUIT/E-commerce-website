@@ -9,10 +9,12 @@ import {
   Typography,
 } from "@material-ui/core";
 import { ShoppingCart } from "@material-ui/icons";
-import logo from "../../assets/logo.jpg";
-import logoHoodie from "../../assets/hoodie_icon.jpg";
+import logoHome from "../../assets/commerce.png";
+import logoHoodie from "../../assets/hoodie.png";
 import logoShirt from "../../assets/shirt_icon.png";
 import logoSweater from "../../assets/sweater_icon.png";
+import logoLogin from "../../assets/login_icon.png";
+import logoLogout from "../../assets/logout_icon.png";
 
 import useStyles from "./styles";
 
@@ -33,7 +35,7 @@ const Navbar = ({ totalItems }) => {
             color="inherit"
           >
             <img
-              src={logoShirt}
+              src={logoHome}
               alt="Commerce.js"
               height="25 pixel"
               className={classes.image}
@@ -48,7 +50,7 @@ const Navbar = ({ totalItems }) => {
             color="inherit"
           >
             <img
-              src={logoHoodie}
+              src={logoShirt}
               alt="Commerce.js"
               height="25 pixel"
               className={classes.image}
@@ -94,7 +96,7 @@ const Navbar = ({ totalItems }) => {
             color="inherit"
           >
             <img
-              src={logo}
+              src={logoLogin}
               alt="Commerce.js"
               height="25 pixel"
               className={classes.image}
@@ -109,7 +111,7 @@ const Navbar = ({ totalItems }) => {
             color="inherit"
           >
             <img
-              src={logo}
+              src={logoLogout}
               alt="Commerce.js"
               height="25 pixel"
               className={classes.image}
