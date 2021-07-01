@@ -7,10 +7,13 @@ import {
   Typography,
   IconButton,
 } from "@material-ui/core";
+import { Link } from "react-router-dom";
 import { AddShoppingCart } from "@material-ui/icons"; // named import/export
 import useStyles from "./styles"; // default import/export
+import "bootstrap/dist/css/bootstrap.min.css";
+import Button from "@material-ui/core/Button";
 
-const Product = ({ product, onAddToCart }) => {
+const Product = ({ product, onAddToCart, onSeeDetail }) => {
   const classes = useStyles(); // sử dụng các styles đã định nghĩa sẵn trogn  file styles.js
 
   return (
@@ -22,20 +25,24 @@ const Product = ({ product, onAddToCart }) => {
       />
       <CardContent>
         <div className={classes.cardContent}>
-          <Typography variant="h5" gutterBottom>
-            {product.name}
+          <Typography display="inline" noWrap variant="h6" gutterBottom>
+            {product.name.length > 23
+              ? product.name.substring(0, 20) + "..."
+              : product.name}
           </Typography>
           <Typography variant="h5">
             {product.price.formatted_with_symbol}
           </Typography>
         </div>
-        <Typography
-          dangerouslySetInnerHTML={{ __html: product.description }}
-          variant="body2"
-          color="textSecondary"
-        />
       </CardContent>
       <CardActions disableSpacing className={classes.cardActions}>
+        <Button
+          component={Link}
+          to="/detail"
+          onClick={() => onSeeDetail(product)}
+        >
+          Detail
+        </Button>
         <IconButton
           aria-label="Add to Cart"
           onClick={() => onAddToCart(product.id, 1)}

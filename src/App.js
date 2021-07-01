@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
 // toàn bộ các nghiệp vụ sẽ lưu trong commerce
 import { commerce } from "./lib/commerce";
 
-import { Products, Navbar, Cart, Checkout } from "./components";
+import { Products, Navbar, Cart, Checkout, Detail } from "./components";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 const App = () => {
   // Khởi tạo state cho products bằng hook
@@ -26,13 +26,17 @@ const App = () => {
   // Khởi tạo state cho  errorMessage của đơn hàng sau khi thanh toán
   const [errorMessage, setErrorMessage] = useState("");
 
-  // Hàm lấy data của các sản phẩm sau đó cập nhật cho state products
+  const [detail, setDetail] = useState(null);
 
   // Xử lý event khi click button AddToCart trên sản phẩm ở homepage
   const handleAddToCart = async (productId, quantity) => {
     const item = await commerce.cart.add(productId, quantity);
 
     setCart(item.cart);
+  };
+
+  const handleSeeDetail = async (product) => {
+    setDetail(product);
   };
   // Xử lý event khi click button + - trên sản phẩm ở trong giỏ hàng
   const handleUpdateCartQty = async (lineItemId, quantity) => {
@@ -131,21 +135,24 @@ const App = () => {
             <Products
               products={products}
               onAddToCart={handleAddToCart}
+              onSeeDetail={handleSeeDetail}
               handleUpdateCartQty
             />
           </Route>
-
           <Route exact path="/shirts">
             <Products
               products={shirts}
               onAddToCart={handleAddToCart}
+              onSeeDetail={handleSeeDetail}
               handleUpdateCartQty
             />
           </Route>
+
           <Route exact path="/hoodies">
             <Products
               products={hoodies}
               onAddToCart={handleAddToCart}
+              onSeeDetail={handleSeeDetail}
               handleUpdateCartQty
             />
           </Route>
@@ -153,8 +160,12 @@ const App = () => {
             <Products
               products={sweaters}
               onAddToCart={handleAddToCart}
+              onSeeDetail={handleSeeDetail}
               handleUpdateCartQty
             />
+          </Route>
+          <Route exact path="/detail">
+            <Detail product={detail} onAddToCart={handleAddToCart} />
           </Route>
           <Route exact path="/cart">
             <Cart
