@@ -74,10 +74,12 @@ const App = () => {
         newOrder
       );
 
+
       setOrder(incomingOrder);
 
       refreshCart();
     } catch (error) {
+      console.log(error);
       setErrorMessage(error.data.error.message);
     }
   };
@@ -89,6 +91,7 @@ const App = () => {
         category_slug: ["shirt"],
       });
 
+      console.log(shirts);
       setShirts(data);
     };
     const fetchHoodies = async () => {

@@ -31,7 +31,6 @@ const Detail = ({ product, onAddToCart }) => {
               <List>
                 <ListItem>
                   <Typography
-                    numberOfLines={1}
                     gutterBottom
                     variant="h5"
                     color="textPrimary"

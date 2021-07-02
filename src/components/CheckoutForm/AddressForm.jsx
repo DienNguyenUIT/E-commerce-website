@@ -15,6 +15,7 @@ import FormInput from "./CustomTextField";
 
 const AddressForm = ({ checkoutToken, next }) => {
   // Khởi tạo state cho các selection trong AddressForm
+  const [didMount, setDidMount] = useState(false);
   const [shippingCountries, setShippingCountries] = useState([]);
   const [shippingCountry, setShippingCountry] = useState("");
   const [shippingSubdivisions, setShippingSubdivisions] = useState([]);
@@ -38,6 +39,8 @@ const AddressForm = ({ checkoutToken, next }) => {
     };
 
     fetchShippingCountries(checkoutToken.id);
+    setDidMount(true);
+    return () => setDidMount(false);
   }, []);
 
   useEffect(() => {
@@ -52,6 +55,8 @@ const AddressForm = ({ checkoutToken, next }) => {
       setShippingSubdivision(Object.keys(subdivisions)[0]);
     };
     if (shippingCountry) fetchSubdivisions(shippingCountry);
+    setDidMount(true);
+    return () => setDidMount(false);
   }, [shippingCountry]);
 
   useEffect(() => {
@@ -75,6 +80,8 @@ const AddressForm = ({ checkoutToken, next }) => {
         shippingCountry,
         shippingSubdivision
       );
+    setDidMount(true);
+    return () => setDidMount(false);
   }, [shippingSubdivision]);
 
   const countries = Object.entries(shippingCountries).map(([code, name]) => ({
@@ -111,8 +118,8 @@ const AddressForm = ({ checkoutToken, next }) => {
           <Grid container spacing={3}>
             <FormInput name="firstName" label="First name" />
             <FormInput name="lastName" label="Last name" />
-            <FormInput name="address1" label="Address line 1" />
-            <FormInput name="phone" label="Phone" />
+            <FormInput name="address1" label="Address" />
+            {/* <FormInput name="phone" label="Phone" /> */}
             <FormInput name="email" label="Email" />
             <FormInput name="city" label="City" />
             <FormInput name="zip" label="Zip / Postal code" />

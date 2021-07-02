@@ -43,7 +43,7 @@ const Checkout = ({ cart, onCaptureCheckout, order, error }) => {
 
         setCheckoutToken(token);
       } catch (error) {
-        console.log(error);
+        history.push("/");
       }
     };
 
@@ -80,18 +80,19 @@ const Checkout = ({ cart, onCaptureCheckout, order, error }) => {
           Back to home
         </Button>
       </>
-    ) : isFinished ? (
-      <>
-        <div>
-          <Typography variant="h5">Thank you for your purchase</Typography>
-          <Divider className={classes.divider} />
-        </div>
-        <br />
-        <Button component={Link} variant="outlined" type="button" to="/">
-          Back to home
-        </Button>
-      </>
     ) : (
+      //   isFinished ? (
+      //   <>
+      //     <div>
+      //       <Typography variant="h5">Thank you for your purchase</Typography>
+      //       <Divider className={classes.divider} />
+      //     </div>
+      //     <br />
+      //     <Button component={Link} variant="outlined" type="button" to="/">
+      //       Back to home
+      //     </Button>
+      //   </>
+      // ) :
       <div className={classes.spinner}>
         <CircularProgress />
       </div>
