@@ -74,7 +74,6 @@ const App = () => {
         newOrder
       );
 
-
       setOrder(incomingOrder);
 
       refreshCart();
@@ -91,7 +90,6 @@ const App = () => {
         category_slug: ["shirt"],
       });
 
-      console.log(shirts);
       setShirts(data);
     };
     const fetchHoodies = async () => {

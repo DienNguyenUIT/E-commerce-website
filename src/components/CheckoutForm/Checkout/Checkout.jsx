@@ -52,7 +52,14 @@ const Checkout = ({ cart, onCaptureCheckout, order, error }) => {
 
   const next = (data) => {
     setShippingData(data);
-    console.log(data);
+    const arr = [];
+    // for (let i = 0; i < checkoutToken.live.line_items.length; i++) {
+    //   arr.push(checkoutToken.live.line_items[i].id);
+    // }
+    // console.log(arr);
+    // console.log(checkoutToken.live.line_items);
+
+    // console.log(checkoutToken.live.line_items[0].id);
     nextStep();
   };
 
