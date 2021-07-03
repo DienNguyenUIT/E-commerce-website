@@ -1,12 +1,21 @@
-import React, { useState, useEffect } from "react";
+import firebase from "firebase";
+import React, { useEffect, useState } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import SignIn from "./Auth/pages/SignIn/index.jsx";
+import { Cart, Checkout, Navbar, Products } from "./components";
 // import Products from "./components/Products/Products";
 // import Navbar from "./components/Products/Products";'
-
 // toàn bộ các nghiệp vụ sẽ lưu trong commerce
 import { commerce } from "./lib/commerce";
 
-import { Products, Navbar, Cart, Checkout } from "./components";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+// Configure Firebase.
+const config = {
+  apiKey: process.env.REACT_APP_FIREBASE_API,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  // ...
+};
+firebase.initializeApp(config);
+
 const App = () => {
   // Khởi tạo state cho products bằng hook
   const [products, setProducts] = useState([]);
@@ -120,6 +129,30 @@ const App = () => {
     fetchCart();
   }, []);
 
+  const [isSignedIn, setIsSignedIn] = useState(false); // Local signed-in state.
+
+  // // Listen to the Firebase Auth state and set the local state.
+  useEffect(() => {
+    const unregisterAuthObserver = firebase
+      .auth()
+      .onAuthStateChanged((user) => {
+        setIsSignedIn(!!user);
+        console.log("Logged in user: ", user.displayName);
+        console.log("User Token: ", user.Token);
+      });
+
+    return () => unregisterAuthObserver(); // Make sure we un-register Firebase observers when the component unmounts.
+  }, []);
+
+  // if (!isSignedIn) {
+  //   return (
+  //     <div>
+  //       <p>Please sign-in:</p>
+  //       <p>Please sign-in:</p>
+  //     </div>
+  //   );
+  // }
+
   return (
     <Router>
       <div style={{ display: "flex" }}>
@@ -174,6 +207,7 @@ const App = () => {
               error={errorMessage}
             />
           </Route>
+          <Route path="/sign-in" component={SignIn} />
         </Switch>
       </div>
     </Router>

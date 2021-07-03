@@ -1,24 +1,18 @@
-import React from "react";
 import {
-  AppBar,
-  Toolbar,
-  IconButton,
-  Badge,
-  MenuItem,
-  Menu,
-  Typography,
+  AppBar, Badge, IconButton, Toolbar, Typography
 } from "@material-ui/core";
 import { ShoppingCart } from "@material-ui/icons";
+import React from "react";
+import { Link, useLocation } from "react-router-dom";
 import logoHome from "../../assets/commerce.png";
 import logoHoodie from "../../assets/hoodie.png";
-import logoShirt from "../../assets/shirt_icon.png";
-import logoSweater from "../../assets/sweater_icon.png";
 import logoLogin from "../../assets/login_icon.png";
 import logoLogout from "../../assets/logout_icon.png";
-
+import logoShirt from "../../assets/shirt_icon.png";
+import logoSweater from "../../assets/sweater_icon.png";
 import useStyles from "./styles";
 
-import { Link, useLocation } from "react-router-dom";
+
 const Navbar = ({ totalItems }) => {
   const classes = useStyles();
   const location = useLocation();
@@ -90,7 +84,7 @@ const Navbar = ({ totalItems }) => {
           </Typography>
           <Typography
             component={Link}
-            to="/sweaters"
+            to="/sign-in"
             variant="h6"
             className={classes.title}
             color="inherit"
