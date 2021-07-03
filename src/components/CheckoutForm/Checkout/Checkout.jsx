@@ -52,7 +52,7 @@ const Checkout = ({ cart, onCaptureCheckout, order, error }) => {
 
   const next = (data) => {
     setShippingData(data);
-
+    console.log(data);
     nextStep();
   };
 

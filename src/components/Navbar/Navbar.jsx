@@ -7,13 +7,13 @@ import {
   Typography,
 } from "@material-ui/core";
 import { ShoppingCart } from "@material-ui/icons";
-import logo from "../../assets/logo.jpg";
+import logo from "../../assets/home.png";
 import logoHoodie from "../../assets/hoodie_icon.jpg";
 import logoShirt from "../../assets/shirt_icon.png";
 import logoSweater from "../../assets/sweater_icon.png";
-
+import Button from "react-bootstrap/Button";
 import useStyles from "./styles";
-
+import MenuIcon from "@material-ui/icons/Menu";
 import { Link, useLocation } from "react-router-dom";
 const Navbar = ({ totalItems }) => {
   const classes = useStyles();
@@ -21,6 +21,22 @@ const Navbar = ({ totalItems }) => {
 
   return (
     <>
+      {/* <AppBar position="static">
+        <Toolbar>
+          <IconButton
+            edge="start"
+            className={classes.menuButton}
+            color="inherit"
+            aria-label="menu"
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h6" className={classes.title}>
+            News
+          </Typography>
+          <Button color="inherit">Login</Button>
+        </Toolbar>
+      </AppBar> */}
       <AppBar position="fixed" className={classes.appBar} color="inherit">
         <Toolbar>
           <Typography
@@ -31,7 +47,7 @@ const Navbar = ({ totalItems }) => {
             color="inherit"
           >
             <img
-              src={logoShirt}
+              src={logo}
               alt="Commerce.js"
               height="25 pixel"
               className={classes.image}
@@ -45,12 +61,6 @@ const Navbar = ({ totalItems }) => {
             className={classes.title}
             color="inherit"
           >
-            <img
-              src={logoHoodie}
-              alt="Commerce.js"
-              height="25 pixel"
-              className={classes.image}
-            />
             T-Shirt
           </Typography>
           <Typography
@@ -60,12 +70,6 @@ const Navbar = ({ totalItems }) => {
             className={classes.title}
             color="inherit"
           >
-            <img
-              src={logoHoodie}
-              alt="Commerce.js"
-              height="25 pixel"
-              className={classes.image}
-            />
             Hoodie
           </Typography>
 
@@ -76,12 +80,6 @@ const Navbar = ({ totalItems }) => {
             className={classes.title}
             color="inherit"
           >
-            <img
-              src={logoSweater}
-              alt="Commerce.js"
-              height="25 pixel"
-              className={classes.image}
-            />
             Sweater
           </Typography>
           <Typography
@@ -91,13 +89,7 @@ const Navbar = ({ totalItems }) => {
             className={classes.title}
             color="inherit"
           >
-            <img
-              src={logo}
-              alt="Commerce.js"
-              height="25 pixel"
-              className={classes.image}
-            />
-            Sign in
+            Sign up
           </Typography>
           <Typography
             component={Link}
@@ -106,17 +98,11 @@ const Navbar = ({ totalItems }) => {
             className={classes.title}
             color="inherit"
           >
-            <img
-              src={logo}
-              alt="Commerce.js"
-              height="25 pixel"
-              className={classes.image}
-            />
-            Sign up
+            Sign in
           </Typography>
 
           <div className={classes.grow} />
-          {/* (location.pathname === "/" || location.pathname === "/hoodies") */}
+
           {location.pathname !== "/cart" && (
             <div className={classes.button}>
               <IconButton
@@ -132,7 +118,8 @@ const Navbar = ({ totalItems }) => {
             </div>
           )}
         </Toolbar>
-      </AppBar>
+      </AppBar>{" "}
+      *
     </>
   );
 };

@@ -36,7 +36,7 @@ const PaymentForm = ({
     });
 
     if (error) {
-      console.log("[error]", error);
+      console.log("[error]", "hello");
     } else {
       const orderData = {
         line_items: checkoutToken.live.line_items,

@@ -6,16 +6,15 @@ import {
   CardActions,
   Typography,
   IconButton,
+  Button,
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { AddShoppingCart } from "@material-ui/icons"; // named import/export
 import useStyles from "./styles"; // default import/export
 import "bootstrap/dist/css/bootstrap.min.css";
-import Button from "@material-ui/core/Button";
 
 const Product = ({ product, onAddToCart, onSeeDetail }) => {
-  const classes = useStyles(); // sử dụng các styles đã định nghĩa sẵn trogn  file styles.js
-
+  const classes = useStyles(); // sử dụng các styles đã định nghĩa sẵn trong file styles.js
   return (
     <Card className={classes.root}>
       <CardMedia
