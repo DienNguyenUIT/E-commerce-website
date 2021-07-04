@@ -12,6 +12,8 @@ import {
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { useStyles } from "./styles";
+
+// Component <Detail/> là trang chi tiết sản phẩm
 const Detail = ({ product, onAddToCart }) => {
   const classes = useStyles();
 
@@ -78,16 +80,6 @@ const Detail = ({ product, onAddToCart }) => {
                     </Grid>
                   </ListItem>
                   <ListItem>
-                    {/* <Button
-                      onClick={() => onAddToCart(product.id, 1)}
-                      component={Link}
-                      to="/cart"
-                      type="button"
-                      fullWidth
-                      variant="contained"
-                    >
-                      Back to Home
-                    </Button> */}
                     <Button
                       onClick={() => onAddToCart(product.id, 1)}
                       component={Link}

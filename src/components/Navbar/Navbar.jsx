@@ -7,84 +7,83 @@ import {
   Typography,
 } from "@material-ui/core";
 import { ShoppingCart } from "@material-ui/icons";
-import logo from "../../assets/home.png";
-import logoHoodie from "../../assets/hoodie_icon.jpg";
-import logoShirt from "../../assets/shirt_icon.png";
-import logoSweater from "../../assets/sweater_icon.png";
+import logoHome from "../../assets/commerce.png";
+import logoHoodie from "../../assets/hoodie.png";
+import logoShirt from "../../assets/shirt.png";
+import logoSweater from "../../assets/sweater.png";
 import Button from "react-bootstrap/Button";
 import useStyles from "./styles";
-import MenuIcon from "@material-ui/icons/Menu";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 
+// Component <Navbar/> là thanh điều hướng các trang
 const Navbar = ({ totalItems }) => {
   const classes = useStyles();
   const location = useLocation();
 
+  const history = useHistory();
   return (
     <>
-      <AppBar position="fixed" className={classes.appBar} color="inherit">
+      <AppBar position="fixed" className={classes.appBar} color="default">
         <Toolbar>
-          <Typography
-            component={Link}
-            to="/"
-            variant="h6"
-            className={classes.title}
-            color="inherit"
-          >
-            <img
-              src={logo}
-              alt="Commerce.js"
-              height="25 pixel"
-              className={classes.image}
-            />
+          <Typography variant="h6" className={classes.title} color="inherit">
+            <Link to="/">
+              <img
+                src={logoHome}
+                alt="Commerce.js"
+                height="25 pixel"
+                className={classes.image}
+              />
+            </Link>
             E-shopping
           </Typography>
-          <Typography
-            component={Link}
-            to="/shirts"
-            variant="h6"
-            className={classes.title}
-            color="inherit"
-          >
+
+          <Typography variant="h6" className={classes.title} color="inherit">
+            <Link to="/shirts">
+              <img
+                src={logoShirt}
+                alt="Commerce.js"
+                height="25 pixel"
+                className={classes.image}
+              />
+            </Link>
             T-Shirt
           </Typography>
-          <Typography
-            component={Link}
-            to="/hoodies"
-            variant="h6"
-            className={classes.title}
-            color="inherit"
-          >
+          <Typography variant="h6" className={classes.title} color="inherit">
+            <Link to="/hoodies">
+              <img
+                src={logoHoodie}
+                alt="Commerce.js"
+                height="25 pixel"
+                className={classes.image}
+              />
+            </Link>
             Hoodie
           </Typography>
 
-          <Typography
-            component={Link}
-            to="/sweaters"
-            variant="h6"
-            className={classes.title}
-            color="inherit"
-          >
+          <Typography variant="h6" className={classes.title} color="inherit">
+            <Link to="/sweaters">
+              <img
+                src={logoSweater}
+                alt="Commerce.js"
+                height="25 pixel"
+                className={classes.image}
+              />
+            </Link>
             Sweater
           </Typography>
-          <Typography
+
+          <Button
+            onClick={() => {
+              history.push("/login");
+            }}
             component={Link}
-            to="/sweaters"
-            variant="h6"
-            className={classes.title}
-            color="inherit"
-          >
-            Sign up
-          </Typography>
-          <Typography
-            component={Link}
-            to="/sweaters"
-            variant="h6"
-            className={classes.title}
-            color="inherit"
+            to="/login"
+            size="lg"
+            variant="outline-primary"
+            color="primary"
           >
             Sign in
-          </Typography>
+          </Button>
 
           <div className={classes.grow} />
 
@@ -103,7 +102,7 @@ const Navbar = ({ totalItems }) => {
             </div>
           )}
         </Toolbar>
-      </AppBar>{" "}
+      </AppBar>
     </>
   );
 };

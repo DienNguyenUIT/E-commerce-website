@@ -4,12 +4,8 @@ import { Grid } from "@material-ui/core";
 import Product from "./Product/Product";
 import useStyles from "./styles";
 
-//Moi product la 1 object co
-
+// Component <Products/> render từng sản phẩm  qua props
 const Products = ({ products, onAddToCart, onSeeDetail }) => {
-  // Thẻ main tương tự như thẻ div
-  // line 39 : pass props vào component <Product/> để có thể render
-  //trong file product.jsx
   const classes = useStyles();
 
   return (
