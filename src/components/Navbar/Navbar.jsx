@@ -15,28 +15,13 @@ import Button from "react-bootstrap/Button";
 import useStyles from "./styles";
 import MenuIcon from "@material-ui/icons/Menu";
 import { Link, useLocation } from "react-router-dom";
+
 const Navbar = ({ totalItems }) => {
   const classes = useStyles();
   const location = useLocation();
 
   return (
     <>
-      {/* <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="menu"
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            News
-          </Typography>
-          <Button color="inherit">Login</Button>
-        </Toolbar>
-      </AppBar> */}
       <AppBar position="fixed" className={classes.appBar} color="inherit">
         <Toolbar>
           <Typography
@@ -119,7 +104,6 @@ const Navbar = ({ totalItems }) => {
           )}
         </Toolbar>
       </AppBar>{" "}
-      *
     </>
   );
 };

@@ -36,18 +36,16 @@ const PaymentForm = ({
     });
     // lay ra cac id cua line
     if (error) {
-      console.log("[error]", "hello");
+      console.log("[error]", "Card is not valid");
     } else {
       const arr = [];
       for (let i = 0; i < checkoutToken.live.line_items.length; i++) {
         arr.push(checkoutToken.live.line_items[i].id);
       }
-      // console.log(arr);
       const line = {};
       for (let i = 0; i < arr.length; i++) {
         line[arr[i]] = {};
       }
-      console.log(line);
 
       const orderData = {
         line_items: line,
@@ -75,7 +73,7 @@ const PaymentForm = ({
 
       // console.log(orderData);
       onCaptureCheckout(checkoutToken.id, orderData);
-      // timeout();
+      timeout();
       nextStep();
     }
   };

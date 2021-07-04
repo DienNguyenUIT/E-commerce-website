@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
-// import Products from "./components/Products/Products";
-// import Navbar from "./components/Products/Products";'
-
+import ReactJsAlert from "reactjs-alert";
 // toàn bộ các nghiệp vụ sẽ lưu trong commerce
 import { commerce } from "./lib/commerce";
-
 import { Products, Navbar, Cart, Checkout, Detail } from "./components";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 const App = () => {
   // Khởi tạo state cho products bằng hook
   const [products, setProducts] = useState([]);
@@ -27,6 +25,8 @@ const App = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const [detail, setDetail] = useState(null);
+
+  const history = useHistory();
 
   // Xử lý event khi click button AddToCart trên sản phẩm ở homepage
   const handleAddToCart = async (productId, quantity) => {
@@ -78,7 +78,14 @@ const App = () => {
 
       refreshCart();
     } catch (error) {
-      console.log(error);
+      <ReactJsAlert
+        status={true} // true or false
+        type="error" // success, warning, error, info
+        title=" Some products are out of stock ! Please check it and try again" // title you want to display
+        Close={() => {
+          history.push("/");
+        }} // callback method for hide
+      />;
       setErrorMessage(error.data.error.message);
     }
   };

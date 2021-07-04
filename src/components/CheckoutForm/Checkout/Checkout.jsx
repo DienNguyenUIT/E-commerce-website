@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import Alert from "@material-ui/lab/Alert";
+import ReactJsAlert from "reactjs-alert";
 import {
   CssBaseline,
   Paper,
@@ -29,7 +31,6 @@ const Checkout = ({ cart, onCaptureCheckout, order, error }) => {
   const [isFinished, setIsFinished] = useState("false");
   const classes = useStyles();
   const history = useHistory();
-
   const nextStep = () => setActiveStep((prevActiveStep) => prevActiveStep + 1);
   const backStep = () => setActiveStep((prevActiveStep) => prevActiveStep - 1);
 
@@ -52,14 +53,7 @@ const Checkout = ({ cart, onCaptureCheckout, order, error }) => {
 
   const next = (data) => {
     setShippingData(data);
-    const arr = [];
-    // for (let i = 0; i < checkoutToken.live.line_items.length; i++) {
-    //   arr.push(checkoutToken.live.line_items[i].id);
-    // }
-    // console.log(arr);
-    // console.log(checkoutToken.live.line_items);
 
-    // console.log(checkoutToken.live.line_items[0].id);
     nextStep();
   };
 
@@ -87,23 +81,40 @@ const Checkout = ({ cart, onCaptureCheckout, order, error }) => {
           Back to home
         </Button>
       </>
+    ) : isFinished ? (
+      <>
+        <div>
+          <Typography variant="h5">Thank you for your purchase</Typography>
+          <Divider className={classes.divider} />
+        </div>
+        <br />
+        <Button component={Link} variant="outlined" type="button" to="/">
+          Back to home
+        </Button>
+      </>
     ) : (
-      //   isFinished ? (
-      //   <>
-      //     <div>
-      //       <Typography variant="h5">Thank you for your purchase</Typography>
-      //       <Divider className={classes.divider} />
-      //     </div>
-      //     <br />
-      //     <Button component={Link} variant="outlined" type="button" to="/">
-      //       Back to home
-      //     </Button>
-      //   </>
-      // ) :
       <div className={classes.spinner}>
         <CircularProgress />
       </div>
     );
+  // <Alert
+  //   severity="error"
+  //   action={
+  //     <Button component={Link} to="/" color="inherit" size="small">
+  //       Back to Home
+  //     </Button>
+  //   }
+  // >
+  //   Some products are out of stock ! Please check it and try again
+  // </Alert>
+  // <ReactJsAlert
+  //   status={true} // true or false
+  //   type="error" // success, warning, error, info
+  //   title=" Some products are out of stock ! Please check it and try again" // title you want to display
+  //   Close={() => {
+  //     history.push("/");
+  //     }} // callback method for hide
+  //   />
 
   if (error) {
     <>
