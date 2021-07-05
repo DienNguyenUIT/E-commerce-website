@@ -4,12 +4,12 @@ This website is designed by students in the department of software engineering a
 
 ## Team Members 
 
-| Member | ID  | Dapartment |Contribution|Contact|
-|------| ------ |------ |
-| Nguyễn Thanh Điền | 18520600 |Computer Science|Leader, Developer|[Dien](https://www.facebook.com/nguyenthanhdien.uit/)|
-| Lê Trung Hiếu |18520738|Computer Science|Tester, Desiger|[Hieu](https://www.facebook.com/profile.php?id=100009235405580)|
-| Lê Hoàng Cường| 18520544 |Software Engineering|Designer|[Cuong](https://www.facebook.com/hoangcuong.le.3551)|
-|  Nguyễn Nam Hùng|  17520544|Software Engineering|Developer|[Hung](https://www.facebook.com/NamxHung)|
+| Member            | ID       | Dapartment           | Contribution      | Contact                                                               |
+|-------------------|----------|----------------------|-------------------|-----------------------------------------------------------------------|
+| Nguyễn Thanh Điền | 18520600 | Computer Science     | Leader, Developer | [Facebook](https://www.facebook.com/nguyenthanhdien.uit/)             |
+| Lê Trung Hiếu     | 18520738 | Computer Science     | Tester, Desiger   | [Facebook](https://www.facebook.com/profile.php?id=100009235405580) |
+| Lê Hoàng Cường    | 18520544 | Software Engineering | Designer          | [Facebook](https://www.facebook.com/hoangcuong.le.3551)               |
+| Nguyễn Nam Hùng   | 17520544 | Software Engineering | Developer         | [Facebook](https://www.facebook.com/NamxHung)                         |
 ## Demo Website
 
 - 👉 Netlify : [https://coolshop.netlify.app/](https://muahang123.netlify.app/)
