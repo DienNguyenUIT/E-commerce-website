@@ -117,26 +117,21 @@ export default function SignIn() {
                 Forgot password?
               </Link>
             </Grid>
-            
+
             <Grid item>
               <Link href="#" variant="body2">
                 {"Don't have an account? Sign Up"}
-                
-                
               </Link>
-              
             </Grid>
-        
           </Grid>
         </form>
-            {/* GoogleAuthBox */}
-            <StyledFirebaseAuth
-                uiCallback={(ui) => ui.disableAutoSignIn()}
-                uiConfig={uiConfig}
-                firebaseAuth={firebase.auth()}
-                
-              />
-              {/* GoogleAuthBox */}
+        {/* GoogleAuthBox */}
+        <StyledFirebaseAuth
+          uiCallback={(ui) => ui.disableAutoSignIn()}
+          uiConfig={uiConfig}
+          firebaseAuth={firebase.auth()}
+        />
+        {/* GoogleAuthBox */}
       </div>
       <Box mt={8}>
         <Copyright />
