@@ -15,7 +15,7 @@ This website is designed by students in the department of software engineering a
 - 👉 Netlify : [https://coolshop.netlify.app/](https://muahang123.netlify.app/)
 
 
-### Languages and Tools:
+## Languages and Tools:
 <img align="left" alt="Visual Studio Code" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/visual-studio-code/visual-studio-code.png" />
 <img align="left" alt="HTML5" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/html/html.png" />
 
@@ -46,7 +46,15 @@ npm install
 npm start
 ```
 
-## 
+## Review
+
+![](https://live.staticflickr.com/65535/51291116053_ebe610faea_m.jpg)
+![](https://live.staticflickr.com/65535/51291653044_09d9939cdf_m.jpg)
+![](https://live.staticflickr.com/65535/51290935956_af206122b4_m.jpg)
+![](https://live.staticflickr.com/65535/51291652939_278e31ceab_m.jpg)
+![](https://live.staticflickr.com/65535/51291945285_abbb05c6fa_m.jpg)
+![](https://live.staticflickr.com/65535/51291945290_fffb4fb5e8_m.jpg)
+
 
 
 
