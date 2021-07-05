@@ -90,10 +90,10 @@ const Navbar = ({ totalItems }) => {
 
           <Button
             onClick={() => {
-              history.push("/login");
+              history.push("/sign-in");
             }}
             component={Link}
-            to="/login"
+            to="/sign-in"
             size="lg"
             variant="outline-primary"
             color="primary"
