@@ -46,14 +46,26 @@ npm install
 npm start
 ```
 
+
 ## Review
 
-![](https://live.staticflickr.com/65535/51291116053_ebe610faea_m.jpg)
-![](https://live.staticflickr.com/65535/51291653044_09d9939cdf_m.jpg)
-![](https://live.staticflickr.com/65535/51290935956_af206122b4_m.jpg)
-![](https://live.staticflickr.com/65535/51291652939_278e31ceab_m.jpg)
-![](https://live.staticflickr.com/65535/51291945285_abbb05c6fa_m.jpg)
-![](https://live.staticflickr.com/65535/51291945290_fffb4fb5e8_m.jpg)
+### 1. Home Page
+
+![](https://github.com/DienNguyenUIT/SE104.L22.PMCL/blob/main/images/home.png)
+### 2. Detail Page
+![](https://github.com/DienNguyenUIT/SE104.L22.PMCL/blob/main/images/detail.png)
+### 3. Cart Page
+![](https://github.com/DienNguyenUIT/SE104.L22.PMCL/blob/main/images/cart.png)
+### 4. Shipping Address Page
+![](https://github.com/DienNguyenUIT/SE104.L22.PMCL/blob/main/images/address.png)
+### 5. Payment Page
+![](https://github.com/DienNguyenUIT/SE104.L22.PMCL/blob/main/images/payment.png)
+### 6. Confirmation Page
+![](https://github.com/DienNguyenUIT/SE104.L22.PMCL/blob/main/images/comfirmation.png)
+
+
+
+
 
 
 
