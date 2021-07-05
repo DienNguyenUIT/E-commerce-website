@@ -1,7 +1,7 @@
 import firebase from "firebase";
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import SignIn from "./Auth/pages/SignIn/index.jsx";
+import SignIn from "./SignIn/index.jsx";
 import { Cart, Checkout, Navbar, Products } from "./components";
 // import Products from "./components/Products/Products";
 // import Navbar from "./components/Products/Products";'
