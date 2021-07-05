@@ -12,7 +12,7 @@ This website is designed by students in the department of software engineering a
 | Nguyễn Nam Hùng   | 17520544 | Software Engineering | Developer         | [Facebook](https://www.facebook.com/NamxHung)                         |
 ## Demo Website
 
-- 👉 Netlify : [https://coolshop.netlify.app/](https://muahang123.netlify.app/)
+- 👉 Netlify : [https://coolshop.netlify.app/](https://coolshop.netlify.app/)
 
 
 ## Languages and Tools:
