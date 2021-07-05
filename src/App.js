@@ -1,23 +1,32 @@
-import React, { useState, useEffect } from "react";
-import ReactJsAlert from "reactjs-alert";
+import firebase from "firebase";
+import React, { useEffect, useState } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import SignIn from "./Auth/pages/SignIn";
+import { Cart, Checkout, Navbar, Products } from "./components";
+// import Products from "./components/Products/Products";
+// import Navbar from "./components/Products/Products";'
 // toàn bộ các nghiệp vụ sẽ lưu trong commerce
 import { commerce } from "./lib/commerce";
-import CssBaseline from "@material-ui/core/CssBaseline";
 
-import { Products, Navbar, Cart, Checkout, Detail } from "./components";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Link, useHistory } from "react-router-dom";
+// Configure Firebase.
+const config = {
+  apiKey: process.env.REACT_APP_FIREBASE_API,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  // ...
+};
+firebase.initializeApp(config);
+
 const App = () => {
-  // Khởi tạo state cho products bằng react-hook
+  // Khởi tạo state cho products bằng hook
   const [products, setProducts] = useState([]);
-  // Khởi tạo state cho products bằng react-hook
+  // Khởi tạo state cho products bằng hook
   const [shirts, setShirts] = useState([]);
-  // Khởi tạo state cho products bằng react-hook
+  // Khởi tạo state cho products bằng hook
   const [hoodies, setHoodies] = useState([]);
 
-  // Khởi tạo state cho products bằng react-hook
+  // Khởi tạo state cho products bằng hook
   const [sweaters, setSweaters] = useState([]);
-  // Khởi tạo state cho cart bằng react-hook
+  // Khởi tạo state cho cart bằng hook
   const [cart, setCart] = useState({});
 
   // Khởi tạo state cho toàn bộ thông tin của đơn hàng sau khi thanh toán
@@ -26,21 +35,13 @@ const App = () => {
   // Khởi tạo state cho  errorMessage của đơn hàng sau khi thanh toán
   const [errorMessage, setErrorMessage] = useState("");
 
-  // Khởi tạo state cho sản phẩm   cần xem chi tiết
-  const [detail, setDetail] = useState(null);
-
-  const history = useHistory();
+  // Hàm lấy data của các sản phẩm sau đó cập nhật cho state products
 
   // Xử lý event khi click button AddToCart trên sản phẩm ở homepage
   const handleAddToCart = async (productId, quantity) => {
     const item = await commerce.cart.add(productId, quantity);
 
     setCart(item.cart);
-  };
-
-  // Xử lý event khi click Link  trên trên sản phẩm ở homepage để xem chi tiết
-  const handleSeeDetail = async (product) => {
-    setDetail(product);
   };
   // Xử lý event khi click button + - trên sản phẩm ở trong giỏ hàng
   const handleUpdateCartQty = async (lineItemId, quantity) => {
@@ -63,14 +64,14 @@ const App = () => {
     setCart(response.cart);
   };
 
-  // Refresh cart khi thực hiện xong 1 order
+  // Refresh cart không thực hiện xong 1 order
   const refreshCart = async () => {
     const newCart = await commerce.cart.refresh();
 
     setCart(newCart);
   };
 
-  // Capture toàn bộ thông tin đơn hàng
+  // Xử lý event
   const handleCaptureCheckout = async (checkoutTokenId, newOrder) => {
     try {
       const incomingOrder = await commerce.checkout.capture(
@@ -82,19 +83,11 @@ const App = () => {
 
       refreshCart();
     } catch (error) {
-      <ReactJsAlert
-        status={true}
-        type="error"
-        title=" Some products are out of stock ! Please check it and try again"
-        Close={() => {
-          history.push("/");
-        }}
-      />;
       setErrorMessage(error.data.error.message);
     }
   };
 
-  // Fetch sản phẩm và giỏ hàng bằng cách gọi API commercejs
+  // update product and cart
   useEffect(() => {
     const fetchShirts = async () => {
       const { data } = await commerce.products.list({
@@ -127,6 +120,8 @@ const App = () => {
       setCart(await commerce.cart.retrieve());
     };
 
+    // commerce.products.list().then((product) => console.log(product));
+
     fetchProducts();
     fetchShirts();
     fetchHoodies();
@@ -134,34 +129,58 @@ const App = () => {
     fetchCart();
   }, []);
 
+  const [isSignedIn, setIsSignedIn] = useState(false); // Local signed-in state.
+
+  // // Listen to the Firebase Auth state and set the local state.
+  useEffect(() => {
+    const unregisterAuthObserver = firebase
+      .auth()
+      .onAuthStateChanged((user) => {
+        setIsSignedIn(!!user);
+        console.log("Logged in user: ", user.displayName);
+        console.log("User Token: ", user.Token);
+      });
+
+    return () => unregisterAuthObserver(); // Make sure we un-register Firebase observers when the component unmounts.
+  }, []);
+
+  // if (!isSignedIn) {
+  //   return (
+  //     <div>
+  //       <p>Please sign-in:</p>
+  //       <p>Please sign-in:</p>
+  //     </div>
+  //   );
+  // }
+
   return (
     <Router>
       <div style={{ display: "flex" }}>
-        <CssBaseline />
-        <Navbar totalItems={cart.total_items} />
+        {/* <CssBaseline /> */}
+        <Navbar
+          totalItems={cart.total_items}
+          // handleDrawerToggle={handleDrawerToggle}
+        />
         <Switch>
           <Route exact path="/">
             <Products
               products={products}
               onAddToCart={handleAddToCart}
-              onSeeDetail={handleSeeDetail}
-              handleUpdateCartQty
-            />
-          </Route>
-          <Route exact path="/shirts">
-            <Products
-              products={shirts}
-              onAddToCart={handleAddToCart}
-              onSeeDetail={handleSeeDetail}
               handleUpdateCartQty
             />
           </Route>
 
+          <Route exact path="/shirts">
+            <Products
+              products={shirts}
+              onAddToCart={handleAddToCart}
+              handleUpdateCartQty
+            />
+          </Route>
           <Route exact path="/hoodies">
             <Products
               products={hoodies}
               onAddToCart={handleAddToCart}
-              onSeeDetail={handleSeeDetail}
               handleUpdateCartQty
             />
           </Route>
@@ -169,12 +188,8 @@ const App = () => {
             <Products
               products={sweaters}
               onAddToCart={handleAddToCart}
-              onSeeDetail={handleSeeDetail}
               handleUpdateCartQty
             />
-          </Route>
-          <Route exact path="/detail">
-            <Detail product={detail} onAddToCart={handleAddToCart} />
           </Route>
           <Route exact path="/cart">
             <Cart
@@ -192,6 +207,7 @@ const App = () => {
               error={errorMessage}
             />
           </Route>
+          <Route path="/sign-in" component={SignIn} />
         </Switch>
       </div>
     </Router>
