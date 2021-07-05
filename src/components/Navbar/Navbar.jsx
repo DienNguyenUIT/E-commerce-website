@@ -25,50 +25,66 @@ const Navbar = ({ totalItems }) => {
     <>
       <AppBar position="fixed" className={classes.appBar} color="default">
         <Toolbar>
-          <Typography variant="h6" className={classes.title} color="inherit">
-            <Link to="/">
-              <img
-                src={logoHome}
-                alt="Commerce.js"
-                height="25 pixel"
-                className={classes.image}
-              />
-            </Link>
+          <Typography
+            component={Link}
+            to="/"
+            variant="h6"
+            className={classes.title}
+            color="inherit"
+          >
+            <img
+              src={logoHome}
+              alt="Commerce.js"
+              height="25 pixel"
+              className={classes.image}
+            />
             E-shopping
           </Typography>
 
-          <Typography variant="h6" className={classes.title} color="inherit">
-            <Link to="/shirts">
-              <img
-                src={logoShirt}
-                alt="Commerce.js"
-                height="25 pixel"
-                className={classes.image}
-              />
-            </Link>
+          <Typography
+            component={Link}
+            to="/shirts"
+            variant="h6"
+            className={classes.title}
+            color="inherit"
+          >
+            <img
+              src={logoShirt}
+              alt="Commerce.js"
+              height="25 pixel"
+              className={classes.image}
+            />
             T-Shirt
           </Typography>
-          <Typography variant="h6" className={classes.title} color="inherit">
-            <Link to="/hoodies">
-              <img
-                src={logoHoodie}
-                alt="Commerce.js"
-                height="25 pixel"
-                className={classes.image}
-              />
-            </Link>
+          <Typography
+            component={Link}
+            to="/hoodies"
+            variant="h6"
+            className={classes.title}
+            color="inherit"
+          >
+            <img
+              src={logoHoodie}
+              alt="Commerce.js"
+              height="25 pixel"
+              className={classes.image}
+            />
             Hoodie
           </Typography>
 
-          <Typography variant="h6" className={classes.title} color="inherit">
-            <Link to="/sweaters">
-              <img
-                src={logoSweater}
-                alt="Commerce.js"
-                height="25 pixel"
-                className={classes.image}
-              />
-            </Link>
+          <Typography
+            component={Link}
+            to="/sweaters"
+            variant="h6"
+            className={classes.title}
+            color="inherit"
+          >
+            <img
+              src={logoSweater}
+              alt="Commerce.js"
+              height="25 pixel"
+              className={classes.image}
+            />
             Sweater
           </Typography>
 
