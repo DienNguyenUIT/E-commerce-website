@@ -88,19 +88,6 @@ const Navbar = ({ totalItems }) => {
             Sweater
           </Typography>
 
-          <Button
-            onClick={() => {
-              history.push("/sign-in");
-            }}
-            component={Link}
-            to="/sign-in"
-            size="lg"
-            variant="outline-primary"
-            color="primary"
-          >
-            Sign in
-          </Button>
-
           <div className={classes.grow} />
 
           {location.pathname !== "/cart" && (
