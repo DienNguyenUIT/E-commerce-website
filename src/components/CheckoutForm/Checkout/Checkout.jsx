@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-
+import Alert from "@material-ui/lab/Alert";
+import ReactJsAlert from "reactjs-alert";
 import {
   CssBaseline,
   Paper,
@@ -96,6 +97,24 @@ const Checkout = ({ cart, onCaptureCheckout, order, error }) => {
         <CircularProgress />
       </div>
     );
+  // <Alert
+  //   severity="error"
+  //   action={
+  //     <Button component={Link} to="/" color="inherit" size="small">
+  //       Back to Home
+  //     </Button>
+  //   }
+  // >
+  //   Some products are out of stock ! Please check it and try again
+  // </Alert>
+  // <ReactJsAlert
+  //   status={true} // true or false
+  //   type="error" // success, warning, error, info
+  //   title=" Some products are out of stock ! Please check it and try again" // title you want to display
+  //   Close={() => {
+  //     history.push("/");
+  //     }} // callback method for hide
+  //   />
 
   if (error) {
     <>
