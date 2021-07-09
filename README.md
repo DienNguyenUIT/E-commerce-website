@@ -38,7 +38,7 @@ cd SE104.L22.PMCL
 
 ### 2. Install NPM Packages
 ```
-npm install
+npm install react-scripts --save
 ```
 ### 3. Run Application
 
