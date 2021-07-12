@@ -50,15 +50,16 @@ npm start
 ## Review
 
 ### 1. Home Page
-
 ![](https://github.com/DienNguyenUIT/SE104.L22.PMCL/blob/main/images/home.png)
-### 2. Detail Page
+### 2. Login Page
+![](https://github.com/DienNguyenUIT/SE104.L22.PMCL/blob/main/images/signin.png)
+### 3. Detail Page
 ![](https://github.com/DienNguyenUIT/SE104.L22.PMCL/blob/main/images/detail.png)
-### 3. Cart Page
+### 4. Cart Page
 ![](https://github.com/DienNguyenUIT/SE104.L22.PMCL/blob/main/images/cart.png)
-### 4. Shipping Address Page
+### 5. Shipping Address Page
 ![](https://github.com/DienNguyenUIT/SE104.L22.PMCL/blob/main/images/address.png)
-### 5. Payment Page
+### 6. Payment Page
 ![](https://github.com/DienNguyenUIT/SE104.L22.PMCL/blob/main/images/payment.png)
 ### 6. Confirmation Page
 ![](https://github.com/DienNguyenUIT/SE104.L22.PMCL/blob/main/images/comfirmation.png)
